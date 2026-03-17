@@ -1,7 +1,19 @@
-type Props = {};
+import { Heading } from "@chakra-ui/react";
+import type { Category } from "../types";
+
+type Props = {
+  categories: Category[];
+  loading: boolean;
+};
 
 function SideNav({}: Props) {
-  return <div>SideNav</div>;
+  return (
+    <>
+      <Heading color="blue.400" fontSize={12} fontWeight="bold" mb={4}>
+        Categorias
+      </Heading>
+    </>
+  );
 }
 
 export default SideNav;

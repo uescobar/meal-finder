@@ -12,7 +12,6 @@ function App() {
   const [loading, setLoading] = useState(false);
 
   console.log("data", data[0].strCategory);
-
   useEffect(() => {
     const controller = new AbortController();
     const { signal } = controller;
@@ -40,8 +39,8 @@ function App() {
       <GridItem pl="2" bg="orange.300" area={"header"}>
         <Header />
       </GridItem>
-      <GridItem pl="2" bg="pink.300" area={"nav"} height="calc(100vh - 60px)">
-        <SideNav />
+      <GridItem p="5" area={"nav"} height="calc(100vh - 60px)">
+        <SideNav categories={data} loading={loading} />
       </GridItem>
       <GridItem pl="2" bg="green.300" area={"main"}>
         <MainContent />
