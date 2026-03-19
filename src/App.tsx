@@ -11,7 +11,7 @@ function App() {
   const [data, setData] = useState<Category[]>([]);
   const [loading, setLoading] = useState(false);
 
-  console.log("data", data[0].strCategory);
+  //console.log("data", data[0].strCategory);
   useEffect(() => {
     const controller = new AbortController();
     const { signal } = controller;
