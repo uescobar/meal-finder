@@ -15,6 +15,7 @@ function App() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    let ignore = false;
     const controller = new AbortController();
     const { signal } = controller;
     setLoading(true);
@@ -22,12 +23,19 @@ function App() {
     axios
       .get<CategoriesResponse>(url, { signal })
       .then(({ data }) => {
-        setData(data.meals);
+        if (!ignore) {
+          setData(data.meals);
+        }
       })
       .finally(() => {
-        setLoading(false);
+        if (!ignore) {
+          setLoading(false);
+        }
       });
-    return () => controller.abort();
+    return () => {
+      ignore = true;
+      controller.abort();
+    };
   }, []);
 
   return (
