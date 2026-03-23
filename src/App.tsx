@@ -46,8 +46,8 @@ function App() {
           setSelectedCategory={setSelectedCategory}
         />
       </GridItem>
-      <GridItem pl="2" bg="green.300" area={"main"}>
-        <MainContent />
+      <GridItem p="4" bg="grey.100" area={"main"}>
+        <MainContent loading={loadingMeal} meals={dataMeal} />
       </GridItem>
     </Grid>
   );

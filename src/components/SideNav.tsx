@@ -21,7 +21,7 @@ function SideNav({
   setSelectedCategory,
 }: Props) {
   return loading ? (
-    <SkeletonText mt="1" noOfLines={8} spacing="6" skeletonHeight="2" />
+    <SkeletonText mt="1" noOfLines={8} gap="6" />
   ) : (
     <>
       <Heading color="blue.400" fontSize={12} fontWeight="bold" mb={4}>
