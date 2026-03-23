@@ -4,16 +4,27 @@ import SideNav from "./components/SideNav";
 import MainContent from "./components/MainContent";
 import { useState } from "react";
 
-import type { Category } from "./types";
+import type { Category, Meal } from "./types";
 import useHttpData from "./hooks/useHttpData";
 
+const url = "https://www.themealdb.com/api/json/v1/1/list.php?c=list";
+
+const makeMealUrl = (category: Category) => {
+  return `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category.strCategory}`;
+};
+
+const defaultCategory = { strCategory: "Beef" };
+
 function App() {
-  const url = "https://www.themealdb.com/api/json/v1/1/list.php?c=list";
-  const [selectedCategory, setSelectedCategory] = useState<Category>({
-    strCategory: "Beef",
-  });
+  const [selectedCategory, setSelectedCategory] =
+    useState<Category>(defaultCategory);
 
   const { loading, data } = useHttpData<Category>(url);
+  const { loading: loadingMeal, data: dataMeal } = useHttpData<Meal>(
+    makeMealUrl(defaultCategory),
+  );
+
+  console.log({ dataMeal });
 
   return (
     <Grid
