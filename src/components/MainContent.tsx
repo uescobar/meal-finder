@@ -21,7 +21,7 @@ function MainContent({ meals, loading }: Props) {
     // Passing `columns={[2, null, 3]}` and `columns={{sm: 2, md: 3}}`
     // will have the same effect.
 
-    <SimpleGrid columns={[2, null, 3]} gap="40px">
+    <SimpleGrid columns={[2, null, 3]} gap="15px">
       {meals.map((meal) => (
         <Card.Root key={meal.idMeal} maxW="sm" boxShadow="lg">
           <CardBody>
