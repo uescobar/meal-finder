@@ -1,14 +1,5 @@
 import type { Meal } from "../types";
-import {
-  Button,
-  Card,
-  CardBody,
-  CardFooter,
-  Heading,
-  Image,
-  SimpleGrid,
-  Text,
-} from "@chakra-ui/react";
+import { SimpleGrid } from "@chakra-ui/react";
 import MealCard from "./MealCard";
 import SkeletonCard from "./SkeletonCard";
 
