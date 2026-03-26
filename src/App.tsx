@@ -47,7 +47,7 @@ function App() {
       });
   };
 
-  const { fetch } = useFetch<MealDetails>();
+  const { fetch, loading: loadingMealDetails } = useFetch<MealDetails>();
 
   const searchMealDetails = (meal: Meal) => {
     onOpen();
@@ -99,7 +99,11 @@ function App() {
           />
         </GridItem>
       </Grid>
-      <RecipeModal isOpen={open} onClose={onClose} />
+      <RecipeModal
+        loading={loadingMealDetails}
+        isOpen={open}
+        onClose={onClose}
+      />
     </>
   );
 }
