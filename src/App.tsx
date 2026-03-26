@@ -4,7 +4,7 @@ import SideNav from "./components/SideNav";
 import MainContent from "./components/MainContent";
 import { useState } from "react";
 
-import type { Category, Meal, SearchForm } from "./types";
+import type { Category, Meal, MealDetails, SearchForm } from "./types";
 import useHttpData from "./hooks/useHttpData";
 import axios from "axios";
 import RecipeModal from "./components/RecipeModal";
@@ -47,7 +47,7 @@ function App() {
       });
   };
 
-  const { fetch } = useFetch<Meal>();
+  const { fetch } = useFetch<MealDetails>();
 
   const searchMealDetails = (meal: Meal) => {
     onOpen();
