@@ -8,7 +8,7 @@ export default () => {
   const fetch = (url: string) => {
     setLoading(true);
     axios.get(url).then(({ data }) => {
-      console.log(data);
+      setData(data.meals[0]);
     });
   };
   return { loading, data, fetch };

@@ -10,10 +10,11 @@ import axios from "axios";
 import RecipeModal from "./components/RecipeModal";
 import useFetch from "./hooks/useFetch";
 
-const url = "https://www.themealdb.com/api/json/v1/1/list.php?c=list";
+const baseUrl = "https://www.themealdb.com/api/json/v1/1/";
+const url = `${baseUrl}list.php?c=list`;
 
 const makeMealUrl = (category: Category) => {
-  return `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category.strCategory}`;
+  return `${baseUrl}filter.php?c=${category.strCategory}`;
 };
 
 const defaultCategory = { strCategory: "Beef" };
@@ -34,7 +35,7 @@ function App() {
   } = useHttpData<Meal>(makeMealUrl(defaultCategory));
 
   const searchApi = (searchForm: SearchForm) => {
-    const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchForm.search}`;
+    const url = `${baseUrl}search.php?s=${searchForm.search}`;
     setLoadingMeal(true);
     axios
       .get<{ meals: Meal[] }>(url)
@@ -46,8 +47,13 @@ function App() {
       });
   };
 
-  const { fetch } = useFetch();
-  fetch("");
+  const { fetch } = useFetch<Meal>();
+
+  const searchMealDetails = (meal: Meal) => {
+    onOpen();
+    fetch(`${baseUrl}lookup.php?i=${meal.idMeal}`);
+  };
+
   return (
     <>
       <Grid
@@ -87,7 +93,7 @@ function App() {
         </GridItem>
         <GridItem p="4" bg="grey.100" area={"main"}>
           <MainContent
-            openRecipe={onOpen}
+            openRecipe={searchMealDetails}
             loading={loadingMeal}
             meals={dataMeal}
           />
