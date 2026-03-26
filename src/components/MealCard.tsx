@@ -9,9 +9,9 @@ import {
 } from "@chakra-ui/react";
 import type { Meal } from "../types";
 
-type Props = { meal: Meal };
+type Props = { meal: Meal; openRecipe: () => void };
 
-function MealCard({ meal }: Props) {
+function MealCard({ meal, openRecipe }: Props) {
   return (
     <Card.Root maxW="sm" boxShadow="lg">
       <CardBody>
@@ -22,7 +22,12 @@ function MealCard({ meal }: Props) {
         </Heading>
       </CardBody>
       <CardFooter pt="0">
-        <Button variant="solid" color="white" bgColor="blue.400">
+        <Button
+          variant="solid"
+          color="white"
+          bgColor="blue.400"
+          onClick={openRecipe}
+        >
           Ver Receta
         </Button>
       </CardFooter>
