@@ -8,6 +8,7 @@ import type { Category, Meal, SearchForm } from "./types";
 import useHttpData from "./hooks/useHttpData";
 import axios from "axios";
 import RecipeModal from "./components/RecipeModal";
+import useFetch from "./hooks/useFetch";
 
 const url = "https://www.themealdb.com/api/json/v1/1/list.php?c=list";
 
@@ -19,10 +20,12 @@ const defaultCategory = { strCategory: "Beef" };
 
 function App() {
   const { open, onOpen, onClose } = useDisclosure();
+
   const [selectedCategory, setSelectedCategory] =
     useState<Category>(defaultCategory);
 
   const { loading, data } = useHttpData<Category>(url);
+
   const {
     loading: loadingMeal,
     data: dataMeal,
@@ -43,6 +46,8 @@ function App() {
       });
   };
 
+  const { fetch } = useFetch();
+  fetch("");
   return (
     <>
       <Grid
